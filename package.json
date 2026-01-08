@@ -1,0 +1,29 @@
+{
+  "name": "get-to-the-choppa",
+  "version": "1.0.0",
+  "description": "A WiFi monitoring & troubleshooting tool with a humorous twist",
+  "main": "wifi_monitor.js",
+  "bin": {
+    "choppa": "./wifi_monitor.js"
+  },
+  "scripts": {
+    "start": "node wifi_monitor.js",
+    "monitor": "node wifi_monitor.js"
+  },
+  "keywords": [
+    "wifi",
+    "monitor",
+    "network",
+    "troubleshooting",
+    "humor"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ethos71/get-to-the-choppa.git"
+  }
+}
