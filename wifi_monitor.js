@@ -107,18 +107,19 @@ class WiFiMonitor {
     console.log(`Monitoring WiFi connection every ${interval} seconds...`);
     console.log("Press Ctrl+C to stop.\n");
     
-    const checkLoop = async () => {
+    // Do the first check immediately
+    const connected = await this.checkWiFiConnection();
+    this.displayStatus(connected);
+    
+    // Then check at regular intervals
+    const intervalId = setInterval(async () => {
       const connected = await this.checkWiFiConnection();
       this.displayStatus(connected);
-      
-      setTimeout(checkLoop, interval * 1000);
-    };
-    
-    // Start the monitoring loop
-    checkLoop();
+    }, interval * 1000);
     
     // Handle graceful shutdown
     process.on('SIGINT', () => {
+      clearInterval(intervalId);
       console.log("\n" + "=".repeat(60));
       console.log("Monitor stopped. Stay connected out there! 💻");
       console.log("=".repeat(60));

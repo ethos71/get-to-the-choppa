@@ -8,6 +8,7 @@ import subprocess
 import sys
 import time
 import random
+import platform
 from datetime import datetime
 
 
@@ -39,9 +40,16 @@ class WiFiMonitor:
     def check_wifi_connection(self):
         """Check if WiFi is connected by pinging a reliable server."""
         try:
-            # Try to ping Google's DNS server
+            # Determine ping command based on platform
+            if platform.system().lower() == 'windows':
+                # Windows: -n count, -w timeout in milliseconds
+                ping_cmd = ["ping", "-n", "1", "-w", "2000", "8.8.8.8"]
+            else:
+                # Unix/Linux/Mac: -c count, -W timeout in seconds
+                ping_cmd = ["ping", "-c", "1", "-W", "2", "8.8.8.8"]
+            
             result = subprocess.run(
-                ["ping", "-c", "1", "-W", "2", "8.8.8.8"],
+                ping_cmd,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 timeout=3
