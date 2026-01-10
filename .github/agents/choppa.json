@@ -1,0 +1,15 @@
+{
+  "name": "choppa",
+  "description": "WiFi router agent for Nintendo Switch connectivity",
+  "version": "1.0.0",
+  "capabilities": [
+    "network-configuration",
+    "wifi-hotspot-setup",
+    "troubleshooting",
+    "script-automation"
+  ],
+  "paths": {
+    "scripts": "scripts/",
+    "docs": "docs/robots/"
+  }
+}
